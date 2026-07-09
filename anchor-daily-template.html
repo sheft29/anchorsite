@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Anchor — Daily Template</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Courier New', Courier, monospace;
+    background: #F5F0E8;
+    color: #1C1C1C;
+    width: 8.5in;
+    height: 11in;
+    padding: 0.35in 0.4in;
+    font-size: 8px;
+  }
+
+  .page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 2px solid #1C1C1C;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
+  }
+  .brand {
+    font-family: Georgia, 'DM Serif Display', serif;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .brand .crest {
+    font-size: 13px;
+  }
+  .date-line {
+    font-size: 9px;
+    text-align: right;
+  }
+  .date-line .fillblank {
+    display: inline-block;
+    border-bottom: 1px solid #1C1C1C;
+    min-width: 110px;
+    height: 10px;
+  }
+
+  /* Goals + Mantras row */
+  .top-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .top-box {
+    flex: 1;
+    border: 1.5px solid #1C1C1C;
+    padding: 6px 8px;
+  }
+
+  .section-title {
+    font-family: Georgia, 'DM Serif Display', serif;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid #C9B99A;
+    padding-bottom: 2px;
+    margin-bottom: 5px;
+  }
+
+  .lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .line {
+    border-bottom: 1px dotted #8a8378;
+    height: 10px;
+    font-size: 8px;
+  }
+
+  /* Main grid: two columns */
+  .main-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 10px;
+    min-height: 0;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+  }
+
+  .box {
+    border: 1.5px solid #1C1C1C;
+    padding: 6px 8px;
+  }
+
+  /* Routine box */
+  .routine-box { flex: 0 0 auto; }
+  .routine-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.5px;
+  }
+  .routine-table th {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    border-bottom: 1px solid #C9B99A;
+    padding: 1px 3px;
+  }
+  .routine-table td {
+    padding: 2px 3px;
+    border-bottom: 1px dotted #d8d2c4;
+    vertical-align: top;
+  }
+  .routine-table .time-col { width: 15%; color: #6b6558; }
+  .routine-table .actual-col { width: 30%; color: #8a8378; }
+
+  /* Pillars box */
+  .pillars-box { flex: 1 1 auto; min-height: 0; }
+  .pillar-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    font-size: 7.5px;
+  }
+  .pillar-col-title {
+    font-weight: bold;
+    border-bottom: 1px solid #C9B99A;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
+  }
+  .pillar-item {
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .pillar-check {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border: 1px solid #1C1C1C;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+
+  /* Calendar box */
+  .calendar-box { flex: 0 0 auto; }
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    margin-top: 3px;
+  }
+  .cal-day-label {
+    font-size: 6px;
+    text-align: center;
+    color: #8a8378;
+  }
+  .cal-cell {
+    border: 1px solid #C9B99A;
+    height: 13px;
+    font-size: 6px;
+    text-align: center;
+    line-height: 13px;
+  }
+
+  /* Evening review box */
+  .review-box { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column;}
+  .rating-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 7.5px;
+  }
+  .rating-item {
+    flex: 1;
+  }
+  .rating-scale {
+    display: flex;
+    gap: 2px;
+    margin-top: 2px;
+  }
+  .scale-box {
+    width: 10px;
+    height: 10px;
+    border: 1px solid #1C1C1C;
+    font-size: 6px;
+    text-align: center;
+    line-height: 10px;
+  }
+  .why-line {
+    font-size: 7px;
+    color: #8a8378;
+    font-style: italic;
+    border-bottom: 1px dotted #8a8378;
+    display: block;
+    margin-top: 2px;
+    height: 9px;
+  }
+
+  .core-activities {
+    font-size: 7px;
+    margin-top: 4px;
+    line-height: 1.5;
+    color: #4a453c;
+  }
+  .core-activities span {
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  .honest-line-box {
+    margin-top: auto;
+    border-top: 1.5px solid #C9B99A;
+    padding-top: 5px;
+  }
+  .honest-line-title {
+    font-family: Georgia, 'DM Serif Display', serif;
+    font-size: 9px;
+    font-style: italic;
+    margin-bottom: 3px;
+  }
+  .honest-sub {
+    font-size: 7px;
+    color: #8a8378;
+    margin-bottom: 3px;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 8px;
+    padding-top: 5px;
+    border-top: 1px solid #C9B99A;
+    text-align: center;
+    font-size: 7px;
+    font-style: italic;
+    color: #6b6558;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="brand"><span class="crest">⚓</span> ANCHOR</div>
+    <div class="date-line">
+      Today &nbsp;<span class="fillblank"></span>
+    </div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="section-title">Today's Goals</div>
+      <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="section-title">Mantra / What I'm Holding Onto</div>
+      <div class="lines">
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+
+    <!-- LEFT COLUMN -->
+    <div class="col">
+
+      <div class="box routine-box">
+        <div class="section-title">Routine — Ideal vs. Actual</div>
+        <table class="routine-table">
+          <tr>
+            <th class="time-col">Time</th>
+            <th>Ideal</th>
+            <th class="actual-col">Actual</th>
+          </tr>
+          <tr><td>7:30</td><td>Wake — Peace &amp; Stability</td><td></td></tr>
+          <tr><td>8–9</td><td>Breakfast, prep for day</td><td></td></tr>
+          <tr><td>Work</td><td>—</td><td></td></tr>
+          <tr><td>Eve.</td><td>Stability &amp; dinner</td><td></td></tr>
+          <tr><td>Eve.</td><td>Expression &amp; free time</td><td></td></tr>
+          <tr><td>Wind down</td><td>Lights out</td><td></td></tr>
+        </table>
+      </div>
+
+      <div class="box pillars-box">
+        <div class="section-title">Small Anchors — Today's Choices</div>
+        <div class="pillar-cols">
+          <div>
+            <div class="pillar-col-title">Peace</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Read scripture</div>
+            <div class="pillar-item"><span class="pillar-check"></span>10 min meditation</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Quiet / no screen hour</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Call a loved one</div>
+          </div>
+          <div>
+            <div class="pillar-col-title">Stability</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Stretch</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Protein + water</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Sunlight</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Real food, not fast food</div>
+          </div>
+          <div>
+            <div class="pillar-col-title">Expression</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Dance / move for joy</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Play or listen to music</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Create something small</div>
+            <div class="pillar-item"><span class="pillar-check"></span>Phone-free hour</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box calendar-box">
+        <div class="section-title">This Week</div>
+        <div class="cal-grid">
+          <div class="cal-day-label">S</div><div class="cal-day-label">M</div><div class="cal-day-label">T</div><div class="cal-day-label">W</div><div class="cal-day-label">T</div><div class="cal-day-label">F</div><div class="cal-day-label">S</div>
+          <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col">
+
+      <div class="box review-box">
+        <div class="section-title">Evening Review</div>
+
+        <div class="rating-row">
+          <div class="rating-item">
+            How today went
+            <div class="rating-scale">
+              <div class="scale-box">1</div><div class="scale-box">2</div><div class="scale-box">3</div><div class="scale-box">4</div><div class="scale-box">5</div><div class="scale-box">6</div><div class="scale-box">7</div><div class="scale-box">8</div><div class="scale-box">9</div><div class="scale-box">10</div>
+            </div>
+            <span class="why-line"></span>
+          </div>
+        </div>
+
+        <div class="core-activities">
+          Today I engaged with (circle what applies):<br>
+          <span>Exercise</span><span>Sleep</span><span>Sugar</span><span>Alcohol</span><span>Screens</span><span>Social time</span><span>Deficit / overwhelm</span>
+        </div>
+
+        <div class="honest-line-box">
+          <div class="honest-line-title">Tonight's Honest Line</div>
+          <div class="honest-sub">One sentence. What happened, and what I'd do differently tomorrow.</div>
+          <div class="lines">
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer">
+    "For what will it profit a man if he gains the whole world and forfeits his soul?" — Matthew 16:26
+  </div>
+
+</div>
+</body>
+</html>
